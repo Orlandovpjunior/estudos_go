@@ -1,9 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	n := 42
+
+	go alert()
 	result := fib(n)
 	fmt.Printf("Fib (%d) = %d\n", n, result)
 }
@@ -13,4 +18,11 @@ func fib(x int) int {
 		return x
 	}
 	return fib(x-1) + fib(x-2)
+}
+
+func alert() {
+	for {
+		fmt.Printf("Demora. Ai!\n")
+		time.Sleep(1 * time.Second)
+	}
 }
